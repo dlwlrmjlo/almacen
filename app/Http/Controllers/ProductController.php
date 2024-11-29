@@ -13,7 +13,10 @@ class ProductController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $products = Product::paginate(10);
+
+        // Filtrar productos por el campo 'owner'
+        $products = Product::where('owner', $user->id)->paginate(10);
+    
         return view('products.index', compact('products', 'user'));
     }
 
@@ -33,13 +36,16 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
+{   
+    $user = auth()->user();
     $validated = $request->validate([
         'name' => 'required|string|max:255',
         'description' => 'nullable|string|max:1000',
         'stock' => 'required|integer|min:0',
         'price' => 'required|numeric|min:0',
     ]);
+    $validated['owner'] = $user->id;
+
 
     Product::create($validated);
     return redirect()->route('products.index')->with('success', 'Producto registrado correctamente.');

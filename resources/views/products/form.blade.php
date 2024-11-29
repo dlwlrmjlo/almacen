@@ -1,12 +1,18 @@
-<div class="container mx-auto px-4 py-8">
-    <form action="{{ $action }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+@extends('layouts.app')
+
+@section('title', 'Crear producto')
+
+@section('content')
+<div class="container mx-auto my-4">
+    <form action="{{ $action }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8">
         @csrf
         @if($method)
             @method($method)
         @endif
 
         <div class="mb-4">
-            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
+            <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
             <input 
                 type="text" 
                 name="name" 
@@ -17,7 +23,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Descripción</label>
+            <label for="description" class="block text-gray-700 font-bold mb-2">Descripción</label>
             <textarea 
                 name="description" 
                 id="description" 
@@ -26,7 +32,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="stock" class="block text-gray-700 text-sm font-bold mb-2">Stock</label>
+            <label for="stock" class="block text-gray-700 font-bold mb-2">Stock</label>
             <input 
                 type="number" 
                 name="stock" 
@@ -37,7 +43,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Precio</label>
+            <label for="price" class="block text-gray-700 font-bold mb-2">Precio</label>
             <input 
                 type="number" 
                 step="0.01" 
@@ -48,7 +54,7 @@
                 required>
         </div>
 
-        <div class="flex items-center justify-between">
+        <div class="flex justify-end">
             <button 
                 type="submit" 
                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">

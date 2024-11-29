@@ -14,5 +14,11 @@ class Product extends Model
         'description',
         'stock',
         'price',
+        'owner'
     ];
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner');  
+    }
 }
