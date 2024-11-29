@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="bg-white p-6 rounded-lg shadow-lg">
-    <h1 class="text-2xl font-bold mb-4">Lista de Productos</h1>
+    <h1 class="text-2xl font-bold mb-4">Lista de Productos de: {{$user->name}} </h1>
     <a href="{{ route('products.create') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Nuevo Producto</a>
     <table class="w-full mt-4 border-collapse border border-gray-200">
         <thead>

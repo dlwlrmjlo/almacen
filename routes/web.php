@@ -12,8 +12,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register'); // Formulario de registro
 Route::post('/register', [AuthController::class, 'register']); // Procesar registro
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('products', ProductController::class);
 });
-
-Route::resource('products', ProductController::class);
